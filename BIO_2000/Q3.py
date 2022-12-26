@@ -49,7 +49,7 @@ for x, die1 in enumerate(possibles):
     matching = []
     combinations = {}
     for n in range(sides):
-        
+        pass
 
 
 print(found)
