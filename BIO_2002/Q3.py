@@ -1,4 +1,4 @@
-dic = [0, 1, 2]
+dic = [0, 1, 2, 3, 4, 5, 5]
 num = int(input())
 
 
@@ -14,11 +14,15 @@ def facts(a):
     return None, None
 
 
-for x in range(3, num + 1):
+for x in range(7, num + 1):
     fact1, fact2 = facts(x)
     if fact1 is None:
         dic.append(dic[-1] + 1)
     else:
-        dic.append(dic[fact1] + dic[fact2])
+        value = dic[fact1] + dic[fact2]
+        for y in range(1, 5):
+            if dic[-y] + y < value:
+                value = dic[-y] + y
+        dic.append(value)
 
 print(dic[-1])

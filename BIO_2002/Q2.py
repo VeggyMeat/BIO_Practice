@@ -59,4 +59,4 @@ def follow_command(command, deck):
     return deck
 
 
-print(follow_command(commands, cards))
+print(' '.join(follow_command(commands, cards)))
