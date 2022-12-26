@@ -1,3 +1,5 @@
+# incomplete
+
 sides = int(input())
 
 die_one = input().split(' ')
