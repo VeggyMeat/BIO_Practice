@@ -115,6 +115,7 @@ while True:
     elif command == 'r':
         while True:
             result = take_turn(player)
+            print_board()
             if result == 'Draw':
                 print('Draw')
                 break
@@ -123,5 +124,4 @@ while True:
                 break
             player += 1
             player %= 2
-        print_board()
         break
