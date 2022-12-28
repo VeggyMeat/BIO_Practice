@@ -47,7 +47,6 @@ def check_win(piece, board):
                 if board[add][add + column] == piece:
                     streak += 1
                     if streak == 4:
-                        print(column, add)
                         return True
                 else:
                     streak = 0
@@ -59,7 +58,6 @@ def check_win(piece, board):
                 if board[add][column - add] == piece:
                     streak += 1
                     if streak == 4:
-                        print(column, add)
                         return True
                 else:
                     streak = 0
