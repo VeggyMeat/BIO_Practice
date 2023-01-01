@@ -1,57 +1,77 @@
-# incomplete
+import random
 
 sides = int(input())
-
-die_one = input().split(' ')
-die_one = [int(x) for x in die_one]
-die_one.sort()
-
-die_two = input().split(' ')
-die_two = [int(x) for x in die_two]
-die_two.sort()
+dice1 = [int(x) for x in input().split()]
+dice2 = [int(x) for x in input().split()]
 
 
-def calc_output(one, two):
-    out = {}
-    for num1 in one:
-        for num2 in two:
-            if num1 + num2 in out:
-                out[num1 + num2] += 1
+def perms(l1, l2):
+    dic = {}
+    for x in l1:
+        for y in l2:
+            if x + y in dic:
+                dic[x + y] += 1
             else:
-                out[num1 + num2] = 1
-    return out
+                dic[x + y] = 1
+    return dic
 
 
-outputs = calc_output(die_one, die_two)
+def dic_less(dic1, dic2):
+    # dic2 reference, dic1 check
+    for item in dic1:
+        if item in dic2:
+            if dic2[item] < dic1[item]:
+                return False
+        else:
+            return False
+    return True
 
 
-def all_die(sides, smallest, largest, first_largest=999):
-    if sides == 1:
-        out = []
-        for x in range(smallest, largest + 1):
-            out.append([x])
-        return out
-    dice = []
-    for x in range(smallest, min(largest, first_largest) + 1):
-        out = all_die(sides - 1, x, largest)
-        for die in out:
-            die.insert(0, x)
-            dice.append(die)
-    return dice
+off_by = min(dice1) + min(dice2)
 
+dice1 = [x - min(dice1) for x in dice1]
+dice2 = [x - min(dice2) for x in dice2]
 
-largest = die_one[-1] + die_two[-1] - 1
-smallest = 1
-first_largest = die_one[0] + die_two[0] - 1
-possibles = all_die(sides - 1, smallest, largest, first_largest=first_largest)
-found = []
-print(len(possibles))
+biggest = max(dice1) + max(dice2)
 
-for x, die1 in enumerate(possibles):
-    matching = []
-    combinations = {}
-    for n in range(sides):
-        pass
+combos = perms(dice1, dice2)
 
+dice1.sort()
+dice2.sort()
 
-print(found)
+bfs = [[0]]
+while len(bfs) > 0 and len(bfs[0]) < sides:
+    item = bfs.pop(0)
+    for x in range(item[-1], biggest + 1):
+        copy = item[:]
+        copy.append(x)
+        bfs.append(copy)
+
+bfs.remove(dice1)
+if dice1 != dice2:
+    bfs.remove(dice2)
+
+random.shuffle(bfs)
+found = False
+
+for n, die1 in enumerate(bfs):
+    search = [[0]]
+    while len(search) > 0 and len(search[0]) < sides:
+        item = search.pop(0)
+        for x in range(item[-1], biggest + 1):
+            copy = item[:]
+            copy.append(x)
+            if dic_less(perms(copy, die1), combos):
+                search.append(copy)
+
+    if search:
+        die2 = search[0]
+        die2 = [str(x + off_by - 1) for x in die2]
+        die1 = [str(x + 1) for x in die1]
+        print(' '.join(die1))
+        print(' '.join(die2))
+        found = True
+        break
+
+if not found:
+    print("Impossible")
