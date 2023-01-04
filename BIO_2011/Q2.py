@@ -1,3 +1,5 @@
+# unfinished
+
 nums = list("A23456789TJQK")
 suits = ["C", "H", "S", "D"]
 
