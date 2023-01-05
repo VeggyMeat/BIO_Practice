@@ -1,0 +1,8 @@
+3b) 14, BIO, NTU, ABCDE, BIO14
+3c) 68719476735
+3d) For the passwords to have all characters between them, one of them must start with A (the smaller one),
+and that one must be the final order of that length starting with an A, so that the adjacent next one must be B. This also
+means that they will have the same length, and as 36 characters are needed, both must be 18 characters long. This means that there are either
+1 or none of these adjacents available. For it to be about to overun then it would need to be A then the 17 last characters of the alphabet.
+This shows that when it overflows we would be left with B then the next 17 characters of the alphabet, which works without overlapping. This
+means that only one of these examples exists and any others could not contain the letter A.

@@ -1,0 +1,7 @@
+2b) 31
+2c) 8
+2d) It is not possible for Red to have scored just one more point than green, as it is impossible to score an odd number
+of points in this game, due to the nature of the curving. For a closed loop the line needs to bend at least 4 times,
+and needs to be an even number so that orientation of the line returns to what it was. In the same way if you want to add
+any straight line sections to this, they need to be added in pairs, in order for the loop to finish itself. This means that
+it is impossible for one more point to be scored, as neither side can score an odd number of points
