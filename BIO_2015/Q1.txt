@@ -1,0 +1,13 @@
+1b)
+A A B C B A A
+AA B C B AA
+A A BCB A A
+AA BCB AA
+A ABCBA A
+1c)
+The Block palindrome must have an even length, as to be made up of an even number of blocks, each one has to be paired with another one,
+meaning that whatever the sizes of the blocks, they are multiplied by 2, to match their pair, meaning that its the sum of even numbers which
+can only sum to an even number of total word length.
+For every grouping to be even, there must not be any block in the centre of the word, which does not have a pairing. This suggests that the only
+way this is possible, is for there only to be TWO blocks under any circumstances, as otherwise if there were more than two, the centre two could be collapsed
+into one block, leaving an odd number of blocks. That means that there can only be 2 blocks, and so only 1 grouping of them is possible.
