@@ -1,5 +1,5 @@
 # incomplete
-g
+
 inpt = input()
 on = ''
 dim = ''
