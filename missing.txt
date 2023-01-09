@@ -2,11 +2,11 @@
 #= never attempted
 /= found error, didnt fix
 
-2013 Q3
 2016 Q3
-/2017 Q2
+2019 Q3
 /2003 Q2
+/2017 Q2
+*2013 Q3
 *2018 Q1
 #2012 Q2
 #2013 Q2
-2019 Q3

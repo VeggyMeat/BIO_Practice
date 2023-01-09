@@ -1,46 +1,35 @@
-import copy
+# stolen from Adavya
 
-letters, start = input().split()
-letters = int(letters)
+from functools import lru_cache
 
-alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[:letters]
+N, word = input().split()
+N = int(N)
 
-alpha_set = set(list(alph))
+alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-bfs = [set(list(start))]
-amount = [1]
-count = 0
+for letter in word:
+    if alph[alph.index(letter) + 1] in word:
+        if alph[alph.index(letter) + 2] not in word:
+            print(0)
+            exit()
 
-while len(bfs) > 0:
-    item = bfs.pop(0)
-    quantity = amount.pop(0)
-    left = alpha_set.difference(item)
 
-    if len(left) == 0:
-        count += quantity
-        continue
+# LRU cache remembers inputs to the function, and if same inputs are called, doesn't re-run, just gives back the same result at the previous one
+@lru_cache(maxsize=None)
+def num_blockchains(lets_left, earliest_let):
+    if lets_left == 0:
+        return 1
 
-    for letter in left:
-        num = alph.index(letter)
-        if 1 <= num < letters - 1:
-            if alph[num - 1] in item:
-                if alph[num + 1] in left:
-                    continue
+    sm = 0
 
-        if 0 <= num < letters - 2:
-            if alph[num + 1] in item:
-                if alph[num + 2] in left:
-                    continue
-
-        if 1 < num:
-            if alph[num - 1] in item:
-                if alph[num - 2] in item:
-                    continue
-
-        new = copy.copy(item)
-        new.add(letter)
-        if new in bfs:
-            amount[bfs.index(new)] += quantity
+    for letter in range(0, lets_left):
+        if letter < earliest_let:
+            sm += num_blockchains(lets_left - 1, letter)
         else:
-            bfs.append(new)
-            amount.append(quantity)
+            if letter == lets_left - 1:
+                sm += num_blockchains(lets_left - 1, earliest_let)
+
+    return sm
+
+
+print(num_blockchains(N - len(word), alph.index(min(word))))
