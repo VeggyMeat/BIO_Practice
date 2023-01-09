@@ -54,8 +54,6 @@ def valids(rule, length):
             inside = ""
             prev = ""
 
-    print(combos)
-
     possibilities = all_combos(combos)
     out = []
 
@@ -68,7 +66,6 @@ def valids(rule, length):
 
 for password in passwords:
     checks = valids(rule, len(password))
-    print(checks)
     valid = False
     for check in checks:
         failed = True

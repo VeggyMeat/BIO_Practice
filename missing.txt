@@ -1,0 +1,8 @@
+*= fails some test cases
+
+2003 Q2
+2012 Q2
+2013 Q3
+2016 Q3
+2017 Q2
+*2018 Q1
