@@ -165,6 +165,7 @@ for _ in range(f):
                 direction += 3
 
             hex = max(edge)
+
             if new_sco[1] > most[0]:
                 add = True
             elif new_sco[1] == most[0]:
@@ -179,7 +180,7 @@ for _ in range(f):
 
             edges[edge] = 0
             if add:
-                most = (new_sco[0], new_sco[1], hex, direction, edge)
+                most = (new_sco[1], new_sco[0], hex, direction, edge)
 
     edges[most[4]] = "B"
 
